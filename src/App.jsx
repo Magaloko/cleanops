@@ -3,6 +3,8 @@ import { AuthProvider } from './context/AuthContext'
 import AppLayout from './components/layout/AppLayout'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Kunden from './pages/Kunden'
+import Objekte from './pages/Objekte'
 import Placeholder from './pages/Placeholder'
 
 export default function App() {
@@ -14,8 +16,8 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/kunden" element={<Placeholder title="Kunden" />} />
-            <Route path="/objekte" element={<Placeholder title="Objekte" />} />
+            <Route path="/kunden" element={<Kunden />} />
+            <Route path="/objekte" element={<Objekte />} />
             <Route path="/angebote" element={<Placeholder title="Angebote" />} />
             <Route path="/vertraege" element={<Placeholder title="Verträge" />} />
             <Route path="/projekte" element={<Placeholder title="Projekte" />} />
