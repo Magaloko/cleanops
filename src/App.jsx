@@ -7,6 +7,7 @@ import Kunden from './pages/Kunden'
 import Objekte from './pages/Objekte'
 import Aufgaben from './pages/Aufgaben'
 import Rechnungen from './pages/Rechnungen'
+import Projekte from './pages/Projekte'
 import Placeholder from './pages/Placeholder'
 
 export default function App() {
@@ -22,7 +23,7 @@ export default function App() {
             <Route path="/objekte" element={<Objekte />} />
             <Route path="/angebote" element={<Placeholder title="Angebote" />} />
             <Route path="/vertraege" element={<Placeholder title="Verträge" />} />
-            <Route path="/projekte" element={<Placeholder title="Projekte" />} />
+            <Route path="/projekte" element={<Projekte />} />
             <Route path="/aufgaben" element={<Aufgaben />} />
             <Route path="/mitarbeiter" element={<Placeholder title="Mitarbeiter" />} />
             <Route path="/qualitaet" element={<Placeholder title="Qualität" />} />
