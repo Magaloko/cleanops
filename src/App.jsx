@@ -9,6 +9,7 @@ import Aufgaben from './pages/Aufgaben'
 import Rechnungen from './pages/Rechnungen'
 import Projekte from './pages/Projekte'
 import Berichte from './pages/Berichte'
+import Mitarbeiter from './pages/Mitarbeiter'
 import Placeholder from './pages/Placeholder'
 
 export default function App() {
@@ -26,7 +27,7 @@ export default function App() {
             <Route path="/vertraege" element={<Placeholder title="Verträge" />} />
             <Route path="/projekte" element={<Projekte />} />
             <Route path="/aufgaben" element={<Aufgaben />} />
-            <Route path="/mitarbeiter" element={<Placeholder title="Mitarbeiter" />} />
+            <Route path="/mitarbeiter" element={<Mitarbeiter />} />
             <Route path="/qualitaet" element={<Placeholder title="Qualität" />} />
             <Route path="/rechnungen" element={<Rechnungen />} />
             <Route path="/material" element={<Placeholder title="Material" />} />
