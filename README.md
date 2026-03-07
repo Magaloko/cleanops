@@ -38,6 +38,15 @@ Lead → Site Survey → Quote → Contract → Project → Tasks → GPS Check-
 
 `super_admin` · `admin` · `manager` · `dispatcher` · `supervisor` · `accountant` · `worker` · `customer`
 
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+Copy `.env.example` to `.env` and fill in your Supabase credentials.
+
 ---
 
 *Confidential — Internal Use Only*
