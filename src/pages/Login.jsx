@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Zap, Loader2, Play } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
@@ -6,20 +6,31 @@ import { ROLES } from '../lib/roles'
 
 export default function Login() {
   const navigate = useNavigate()
-  const { loginDemo } = useAuth()
+  const { session, loginWithEmail, loginDemo } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  // Redirect if already logged in
+  useEffect(() => {
+    if (session) navigate('/dashboard', { replace: true })
+  }, [session, navigate])
+
   async function handleSubmit(e) {
     e.preventDefault()
     setError('')
     setLoading(true)
-    await new Promise(r => setTimeout(r, 800))
-    // Platzhalter — wird durch Supabase Auth ersetzt
-    setError('Login noch nicht aktiv. Bitte Demo-Modus verwenden.')
-    setLoading(false)
+    try {
+      await loginWithEmail(email, password)
+      navigate('/dashboard')
+    } catch (err) {
+      setError(err.message === 'Invalid login credentials'
+        ? 'E-Mail oder Passwort falsch.'
+        : err.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   function handleDemo(role) {
@@ -52,6 +63,7 @@ export default function Login() {
                 onChange={e => setEmail(e.target.value)}
                 placeholder="name@firma.at"
                 className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                required
               />
             </div>
             <div>
@@ -62,19 +74,25 @@ export default function Login() {
                 onChange={e => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className="w-full px-3.5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                required
               />
             </div>
+
             {error && (
               <p className="text-sm text-red-400 bg-red-900/20 border border-red-800 rounded-lg px-3 py-2">
                 {error}
               </p>
             )}
+
             <button
               type="submit"
               disabled={loading}
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 text-white text-sm font-medium rounded-lg transition-colors"
             >
-              {loading ? <><Loader2 size={16} className="animate-spin" />Anmelden…</> : 'Anmelden'}
+              {loading
+                ? <><Loader2 size={16} className="animate-spin" />Anmelden…</>
+                : 'Anmelden'
+              }
             </button>
           </form>
         </div>
