@@ -5,11 +5,15 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Kunden from './pages/Kunden'
 import Objekte from './pages/Objekte'
-import Aufgaben from './pages/Aufgaben'
-import Rechnungen from './pages/Rechnungen'
+import Angebote from './pages/Angebote'
+import Vertraege from './pages/Vertraege'
 import Projekte from './pages/Projekte'
-import Berichte from './pages/Berichte'
+import Aufgaben from './pages/Aufgaben'
 import Mitarbeiter from './pages/Mitarbeiter'
+import Qualitaet from './pages/Qualitaet'
+import Rechnungen from './pages/Rechnungen'
+import Material from './pages/Material'
+import Berichte from './pages/Berichte'
 import Placeholder from './pages/Placeholder'
 
 export default function App() {
@@ -23,14 +27,14 @@ export default function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/kunden" element={<Kunden />} />
             <Route path="/objekte" element={<Objekte />} />
-            <Route path="/angebote" element={<Placeholder title="Angebote" />} />
-            <Route path="/vertraege" element={<Placeholder title="Verträge" />} />
+            <Route path="/angebote" element={<Angebote />} />
+            <Route path="/vertraege" element={<Vertraege />} />
             <Route path="/projekte" element={<Projekte />} />
             <Route path="/aufgaben" element={<Aufgaben />} />
             <Route path="/mitarbeiter" element={<Mitarbeiter />} />
-            <Route path="/qualitaet" element={<Placeholder title="Qualität" />} />
+            <Route path="/qualitaet" element={<Qualitaet />} />
             <Route path="/rechnungen" element={<Rechnungen />} />
-            <Route path="/material" element={<Placeholder title="Material" />} />
+            <Route path="/material" element={<Material />} />
             <Route path="/berichte" element={<Berichte />} />
             <Route path="/einstellungen" element={<Placeholder title="Einstellungen" />} />
           </Route>
