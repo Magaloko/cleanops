@@ -1,52 +1,82 @@
 # CleanOps
 
-**Field Service Management Platform** for cleaning and facility management companies in the German-speaking market (AT/DE).
+**Status:** Portfolio-MVP / Prototype  
+**Demo:** https://cleanops-eight.vercel.app  
+**Repository:** https://github.com/Magaloko/cleanops
 
-CleanOps covers the entire operational lifecycle — from lead capture through quote, contract, and project planning, to mobile task execution with photo documentation, checklists and GPS check-in, all the way to automated invoicing and business intelligence.
+CleanOps is a field-service-management SaaS prototype for cleaning and facility management companies in the German-speaking market.
 
-## Features
+It demonstrates how operational workflows can be mapped from lead capture and quote management through project planning, mobile task execution, quality control, invoicing and reporting.
 
-- **15 modules** · 12 workflows · 28+ database tables · Multi-Tenant SaaS
-- GPS check-in with Haversine distance validation
-- Configurable mandatory fields (GPS, photos, checklists) per object
-- Automated invoice generation with double-billing prevention
-- Customer portal (read-only, token-based, no login required)
-- 8 granular roles with dual-layer security (React Router + RLS)
+## Purpose
+
+CleanOps is built as a portfolio reference for an operations-heavy SaaS system, not as a generic landing page. The project focuses on concrete business processes:
+
+- lead and customer management
+- object / site surveys
+- quote, contract and project flow
+- task planning for field teams
+- GPS-based check-in logic
+- checklist and photo documentation
+- quality control before invoicing
+- role-based dashboards for office and field work
+
+## Core Features
+
+- Multi-tenant SaaS structure with company-based data separation
+- Operational process flow: Lead → Survey → Quote → Contract → Project → Tasks → Check-in → Quality Control → Invoice
+- GPS check-in concept with distance validation
+- Configurable requirements per object, e.g. GPS, photos and checklists
+- Customer portal concept with read-only access
+- Granular role model for admin, manager, dispatcher, supervisor, accountant, worker and customer views
+- Supabase/PostgreSQL schema with Row-Level Security approach
 
 ## Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Frontend | React 18 + Vite + Tailwind CSS |
-| Routing | React Router v6 |
-| Backend / DB | Supabase (PostgreSQL + RLS) |
+| Frontend | React + Vite |
+| Routing | React Router |
+| Styling | Tailwind CSS |
+| Backend / DB | Supabase / PostgreSQL |
 | Auth | Supabase Auth |
-| Deployment | Vercel |
-| PDF | html2canvas + jsPDF |
-| Charts | Recharts |
 | Storage | Supabase Storage |
+| Deployment | Vercel |
+| Icons | Lucide React |
 
-## Architecture
-
-Multi-tenant by design — every table carries `company_id`. Row-Level Security policies enforce tenant isolation at the database level, making cross-tenant data access technically impossible.
-
-## Process Flow
-
-Lead → Site Survey → Quote → Contract → Project → Tasks → GPS Check-in → Field Execution → Quality Control → Invoice → Payment
-
-## Roles
-
-`super_admin` · `admin` · `manager` · `dispatcher` · `supervisor` · `accountant` · `worker` · `customer`
-
-## Getting Started
+## Local Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Copy `.env.example` to `.env` and fill in your Supabase credentials.
+Copy `.env.example` to `.env` or `.env.local` and set the required Supabase values.
 
----
+Typical local URL for Vite:
 
-*Confidential — Internal Use Only*
+```text
+http://localhost:5173
+```
+
+## Scripts
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | start local Vite dev server |
+| `npm run build` | create production build |
+| `npm run preview` | preview production build locally |
+| `npm run lint` | run ESLint |
+
+## Portfolio Note
+
+This repository is a portfolio MVP / prototype. It is intended to demonstrate product architecture, workflow design and SaaS implementation patterns for field-service operations.
+
+Before production use, the following areas would need final project-specific validation:
+
+- tenant and permission model
+- Supabase RLS policies
+- legal / data protection requirements
+- invoice and tax logic
+- deployment environment and monitoring
+- production content and customer-specific workflows
